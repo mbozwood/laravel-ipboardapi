@@ -15,5 +15,12 @@
         "psr-4": {
             "MBozwood\\IPBoardApi\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MBozwood\\IPBoardApi\\ExcelServiceProvider"
+            ],
+        }
     }
 }
