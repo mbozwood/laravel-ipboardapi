@@ -4,7 +4,7 @@ namespace MBozwood\IPBoardApi;
 
 use Illuminate\Support\ServiceProvider;
 
-class SocketServiceProvider extends ServiceProvider
+class IpboardApiLaravelServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
