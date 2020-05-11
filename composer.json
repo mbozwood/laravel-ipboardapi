@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MBozwood\\IPBoardApi\\ExcelServiceProvider"
+                "MBozwood\\IPBoardApi\\IpboardApiLaravelServiceProvider"
             ]
         }
     }
