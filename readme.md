@@ -4,7 +4,7 @@ Begin by installing this package through Composer. Run the following from the te
 ` composer require mbozwood/laravel-ipboardapi `  
 
 To expose the neccessary configuration, run  
-` php artisan vendor:publish --tag=config --provider=MBozwood\Ipboard`
+` php artisan vendor:publish --tag=config --provider=MBozwood\IPBoardApi\IpboardApiLaravelServiceProvider`
 
 Add the following properties to your .env file
  - `IPBOARD_API_URL`
