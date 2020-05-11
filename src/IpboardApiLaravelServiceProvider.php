@@ -1,6 +1,6 @@
 <?php
 
-namespace MBozwood\SocketIO;
+namespace MBozwood\IPBoardApi;
 
 use Illuminate\Support\ServiceProvider;
 

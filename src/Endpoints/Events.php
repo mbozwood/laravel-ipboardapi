@@ -1,6 +1,6 @@
 <?php
 
-namespace MBozwood\Ipboard;
+namespace MBozwood\IPBoardApi;
 
 trait Events
 {

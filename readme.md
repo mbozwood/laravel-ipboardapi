@@ -4,31 +4,66 @@ Begin by installing this package through Composer. Run the following from the te
 ` composer require mbozwood/laravel-ipboardapi `  
 
 To expose the neccessary configuration, run  
-` php artisan vendor:publish --tag=config `
+` php artisan vendor:publish --tag=config --provider=MBozwood\Ipboard`
 
+Add the following properties to your .env file
+ - `IPBOARD_API_URL`
+ - `IPBOARD_API_KEY`  
+ 
+To use the package, add `LaravelIPB` to a constructor. This package can be used both statically or non-statically.
 
-To emit a socket event, ensure your node server is running on the port and it is correctly specified in your ENV file as `SOCKET_URL`  
-An example of emitting an event:  
+```php
+<?php
+
+namespace App\Helpers;
+
+use MBozwood\IPBoardApi\LaravelIPB;
+
+class IPBoardAPIHelper
+{
+    protected static $laravelIpb;
+
+    public function __construct(LaravelIPB $laravelIpb)
+    {
+        self::$laravelIpb = $laravelIpb;
+    }
+
+    public static function hello()
+    {
+        return self::$laravelIpb->hello();
+    }
+}
 ```
-Socket::emit('foo', []);
-```  
 
-To explain, `foo` is the event name, and the array is the data element. 
+```php
+use App\Helpers\IPBoardAPIHelper;
 
+$hello = IPBoardAPIHelper::hello();
 ```
-Socket::emit('foo', [
-    'message'  => 'bar',
-]);
-```
-and in the node server file:
+or
 
-```
-io.on('connection', function (socket) {
-  
-  socket.on('foo', function(data) {
-    console.log(data.message);
-  });
-  // bar is output
-  
-});
+```php
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use MBozwood\IPBoardApi\LaravelIPB;
+
+class UpdateNews extends Command
+{
+    protected $laravelIpb;
+    
+    public function __construct(LaravelIPB $laravelIpb)
+    {
+        $this->laravelIpb = $laravelIpb;
+        parent::__construct();
+    }
+
+    public function handle()
+    {
+        $announcements = $this->laravelIpb->getAnnouncements(24);
+        ...
+    }
+}
 ```

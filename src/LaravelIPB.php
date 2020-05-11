@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\ClientException;
 use Mockery\CountValidator\Exception;
 use Psr\Http\Message\ResponseInterface;
 
-class Ipboard
+class LaravelIPB
 {
     use Hello, Members, Topics, Events;
 
