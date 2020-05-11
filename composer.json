@@ -1,0 +1,19 @@
+{
+    "name": "mbozwood/laravel-ipboardapi",
+    "description": "Laravel Package for Accessing IPBoards API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Bozwood-Davies"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.*",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MBozwood\\IPBoardApi\\": "src/"
+        }
+    }
+}
