@@ -1,6 +1,6 @@
 <?php
 
-namespace App\IPBoardApi;
+namespace MBozwood\IPBoardApi;
 
 trait Hello
 {
