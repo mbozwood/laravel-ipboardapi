@@ -12,35 +12,6 @@ Add the following properties to your .env file
  
 To use the package, add `LaravelIPB` to a constructor. This package can be used both statically or non-statically.
 
-```php
-<?php
-
-namespace App\Helpers;
-
-use MBozwood\IPBoardApi\LaravelIPB;
-
-class IPBoardAPIHelper
-{
-    protected static $laravelIpb;
-
-    public function __construct(LaravelIPB $laravelIpb)
-    {
-        self::$laravelIpb = $laravelIpb;
-    }
-
-    public static function hello()
-    {
-        return self::$laravelIpb->hello();
-    }
-}
-```
-
-```php
-use App\Helpers\IPBoardAPIHelper;
-
-$hello = IPBoardAPIHelper::hello();
-```
-or
 
 ```php
 <?php
@@ -62,8 +33,14 @@ class UpdateNews extends Command
 
     public function handle()
     {
-        $announcements = $this->laravelIpb->getAnnouncements(24);
+        $request = [
+            'forums' => 24,
+            'sortBy' => 'date',
+            'sortDir' => 'desc'
+        ];
+        $announcements = $this->laravelIpb->getTopics($request);
         ...
     }
 }
 ```
+
