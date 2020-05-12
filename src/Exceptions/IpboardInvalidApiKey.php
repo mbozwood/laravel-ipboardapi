@@ -1,4 +1,4 @@
-<?php namespace MBozwood\IPBoardApi\Exceptions\Auth;
+<?php namespace MBozwood\IPBoardApi\Exceptions;
 
 use Exception;
 

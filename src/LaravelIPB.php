@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class LaravelIPB
 {
-    use Hello, Members, Posts, Forums, Topics, Events;
+    use Hello, Members, Posts, Topics, Events;
 
     protected $url;
     protected $key;
