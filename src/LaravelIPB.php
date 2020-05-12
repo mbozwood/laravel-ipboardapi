@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class LaravelIPB
 {
-    use Hello, Members, Topics, Events;
+    use Hello, Members, Posts, Forums, Topics, Events;
 
     protected $url;
     protected $key;
@@ -35,6 +35,8 @@ class LaravelIPB
         '1C292/5' => Exceptions\IpboardMemberEmailExists::class,
         '1C292/6' => Exceptions\IpboardMemberInvalidGroup::class,
         '1C292/7' => Exceptions\IpboardMemberIdInvalid::class,
+        '1C292/8' => Exceptions\IpboardMemberNoUsernameEmail::class,
+        '1C292/9' => Exceptions\IpboardMemberNoPassword::class,
         // forums/posts
         '1F295/1' => Exceptions\IpboardForumTopicIdInvalid::class,
         '1F295/2' => Exceptions\IpboardMemberIdInvalid::class,
@@ -43,12 +45,19 @@ class LaravelIPB
         '1F295/5' => Exceptions\IpboardForumPostIdInvalid::class,
         '2F295/6' => Exceptions\IpboardForumPostIdInvalid::class,
         '2F295/7' => Exceptions\IpboardMemberIdInvalid::class,
+        '2F294/A' => Exceptions\IpboardForumNoPermissionPost::class,
+        '2F295/A' => Exceptions\IpboardForumNoPermissionEdit::class,
+        '2F295/B' => Exceptions\IpboardForumNoPermissionDelete::class,
+        '1F295/B' => Exceptions\IpboardForumCannotDeleteFirstPost::class,
         // torums/topics
-        '1F294/1' => Exceptions\IpboardForumTopicIdInvalid::class,
+        '2F294/9' => Exceptions\IpboardForumTopicIdInvalid::class,
         '1F294/2' => Exceptions\IpboardForumIdInvalid::class,
         '1F294/3' => Exceptions\IpboardMemberIdInvalid::class,
         '1F294/4' => Exceptions\IpboardPostInvalid::class,
         '1F294/5' => Exceptions\IpboardTopicTitleInvalid::class,
+        '1F294/7' => Exceptions\IpboardTopicNoForum::class,
+        '1F294/8' => Exceptions\IpboardMemberIdInvalid::class,
+        '2F294/B' => Exceptions\IpboardForumNoPermissionDelete::class,
     ];
 
     /**
@@ -106,6 +115,26 @@ class LaravelIPB
         $response = null;
         try {
             $response = $this->ipbRequest->post($function, ['form_params' => $data])->getBody();
+            return json_decode($response, false);
+        } catch (ClientException $e) {
+            $this->handleError($e->getResponse());
+        }
+    }
+
+    /**
+     * Perform a put request.
+     *
+     * @param string $function The endpoint to perform a POST request on.
+     * @param array $data The form data to be sent.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    private function putRequest($function, $data)
+    {
+        $response = null;
+        try {
+            $response = $this->ipbRequest->put($function, ['form_params' => $data])->getBody();
             return json_decode($response, false);
         } catch (ClientException $e) {
             $this->handleError($e->getResponse());

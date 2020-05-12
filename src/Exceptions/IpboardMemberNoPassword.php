@@ -2,6 +2,7 @@
 
 use Exception;
 
-class InvalidFormat extends Exception {
+class IpboardMemberNoPassword extends Exception
+{
 
 }
