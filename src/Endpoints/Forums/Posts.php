@@ -1,6 +1,6 @@
 <?php
 
-namespace MBozwood\IPBoardApi;
+namespace MBozwood\IPBoardApi\Endpoints\Forums;
 
 trait Posts
 {

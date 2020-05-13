@@ -4,6 +4,11 @@ namespace MBozwood\IPBoardApi;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
+use MBozwood\IPBoardApi\Endpoints\Calendar\Events;
+use MBozwood\IPBoardApi\Endpoints\Forums\Posts;
+use MBozwood\IPBoardApi\Endpoints\Forums\Topics;
+use MBozwood\IPBoardApi\Endpoints\System\Hello;
+use MBozwood\IPBoardApi\Endpoints\System\Members;
 use Mockery\CountValidator\Exception;
 use Psr\Http\Message\ResponseInterface;
 
