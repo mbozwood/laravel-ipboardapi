@@ -41,28 +41,26 @@ trait Topics
     /**
      * Create a post
      *
-     * @param integer $forum
-     * @param integer $author
-     * @param string $title
-     * @param string $post
+     * @param array $data
+     *
      * @return mixed
      */
-    public function createTopic($forum, $author, $title, $post)
+    public function createTopic(array $data)
     {
-        return $this->postRequest('forums/topics', compact('forum', 'title','author', 'post'));
+        return $this->postRequest('forums/topics', $data);
     }
 
     /**
      * Edit a post
      *
      * @param integer $topic_id
-     * @param integer $author
-     * @param string $post
+     * @param array $data
+     *
      * @return mixed
      */
-    public function updateTopic($topic_id, $author, $post)
+    public function updateTopic($topic_id, array $data)
     {
-        return $this->postRequest('forums/topics/' . $topic_id, compact('author', 'post'));
+        return $this->postRequest('forums/topics/' . $topic_id, $data);
     }
 
     /**

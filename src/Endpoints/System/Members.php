@@ -28,18 +28,12 @@ trait Members
     /**
      * Create a member with the details provided
      *
-     * @param string $name
-     * @param string $email
-     * @param array $rawProperties
-     * @param int $group
-     * @param string $password
-     * @param int $validated
-     *
+     * @param $data
      * @return mixed
      */
-    public function createMember($name, $email, $rawProperties = [], $group = 3, $password = 'this-is-not-actually-required2020!', $validated = 1)
+    public function createMember($data)
     {
-        return $this->postRequest('core/members', compact('name', 'email', 'password', 'group', 'rawProperties', 'validated'));
+        return $this->postRequest('core/members', $data);
     }
 
     /**

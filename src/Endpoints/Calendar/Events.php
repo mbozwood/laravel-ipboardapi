@@ -29,35 +29,26 @@ trait Events
     /**
      * Create an event
      *
-     * @param integer $calendar
-     * @param string $title
-     * @param string $description
-     * @param string $start
-     * @param string $end
-     * @param integer $author
+     * @param array $data
+     *
      * @return mixed
      */
-    public function createEvent($calendar, $title, $description, $start, $end, $author)
+    public function createEvent($data)
     {
-        return $this->postRequest('calendar/events', compact('calendar', 'title','description', 'start', 'author', 'end'));
+        return $this->postRequest('calendar/events', $data);
     }
 
     /**
      * Edit an event
      *
      * @param integer $event_id
-     * @param integer $calendar
-     * @param string $title
-     * @param string $description
-     * @param string $start
-     * @param string $end
-     * @param integer $author
+     * @param array $data
      *
      * @return mixed
      */
-    public function updateEvent($event_id, $calendar, $title, $description, $start, $end, $author)
+    public function updateEvent($event_id, $data)
     {
-        return $this->postRequest('calendar/events/' . $event_id, compact('calendar', 'title','description', 'start', 'author', 'end'));
+        return $this->postRequest('calendar/events/' . $event_id, $data);
     }
 
     /**

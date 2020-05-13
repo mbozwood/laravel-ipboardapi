@@ -29,27 +29,26 @@ trait Posts
     /**
      * Create a post
      *
-     * @param integer $topic
-     * @param integer $author
-     * @param string $post
+     * @param array $data
+     *
      * @return mixed
      */
-    public function createPost($topic, $author, $post)
+    public function createPost(array $data)
     {
-        return $this->postRequest('forums/posts', compact('topic','author', 'post'));
+        return $this->postRequest('forums/posts', $data);
     }
 
     /**
      * Edit a post
      *
      * @param integer $post_id
-     * @param integer $author
-     * @param string $post
+     * @param array $data
+     *
      * @return mixed
      */
-    public function updatePost($post_id, $author, $post)
+    public function updatePost($post_id, array $data)
     {
-        return $this->postRequest('forums/posts/' . $post_id, compact('author', 'post'));
+        return $this->postRequest('forums/posts/' . $post_id, $data);
     }
 
     /**
